@@ -1,3 +1,5 @@
+# Copyright (c) Oscar Carballal Prego <info@oscarcp.com>
+# Distributed under MIT license.
 # -*- coding: utf-8 -*-
 
 # TODO:
@@ -9,7 +11,6 @@
 import sys
 import random
 import datetime
-import pdb
 
 # Open files and create empty lists
 films_file = open('lista.txt', 'r')
@@ -42,7 +43,6 @@ def get_players():
         print '* ¿Me estas tomando el pelo? ¡A esto no se puede jugar solo!.'
         sys.exit(0)
     else:
-        # Ojo con esto, vamos a crear la lista vacia
         fake_players = n_players - 1
         while fake_players >= 0:
             points.append(0)
@@ -93,7 +93,6 @@ start = datetime.datetime.now()
 [films.append([line]) for line in films_file]
 
 get_players()
-players_file = open('players.txt', 'a')
 
 while True:
     generate = raw_input('* ¿Generar película? (s/n) ')
