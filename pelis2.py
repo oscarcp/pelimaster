@@ -10,6 +10,9 @@
 # - Solve the codification problem in Windows.
 # - Improve the films list to have a director and description.
 
+# FIXME:
+# - generate_random() does not print 5 spaces before text in format string
+
 # Import python modules
 import sys
 import random
@@ -39,7 +42,7 @@ def get_players():
         try:
             n_players = int(raw_input('* Cuantos jugadores? '))
             check = 1
-        except:
+        except ValueError:
             print '* ERROR: ¡Debes introducir un numero!'
     if n_players == 1:
         print '* ¿Me estas tomando el pelo? ¡A esto no se puede jugar solo!.'
@@ -51,12 +54,14 @@ def get_players():
 
 
 def get_points():
-    winner = raw_input('* Quién ganó? (nombre de jugador): ')
-    players[winner] += 1
+    try:
+        winner = raw_input('* Quién ganó? (nombre de jugador): ')
+        players[winner] += 1
+    except:
+        get_points()
 
 
 def endgame():
-    films_file.close()
     end = datetime.datetime.now()
     time = str((end - start)).split(':')
     counter = len(players) - 1
@@ -88,9 +93,12 @@ start = datetime.datetime.now()
 
 # Fill the films list with film names
 [films.append([line]) for line in films_file]
-
+# Now that the list is ready close the file
+films_file.close()
+# Bring the players to me!
 get_players()
 
+# Some kind of main loop
 while True:
     generate = raw_input('* ¿Generar película? (s/n) ')
     [endgame() if generate == 'n' or generate == 'no' else generate_random()]
