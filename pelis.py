@@ -1,6 +1,10 @@
-# Copyright (c) Oscar Carballal Prego <info@oscarcp.com>
-# Distributed under MIT license.
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright (c) 2010 Oscar Carballal Prego <info@oscarcp.com>
+#
+# Distributed under terms of the MIT license.
 
 # TODO:
 # - Replace lists for dictionaries.
