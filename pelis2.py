@@ -92,9 +92,13 @@ class Game():
 
     def _get_film(self):
         """
-        This function gets a random film from the film list.
+        This function gets a random film from the film list. After printing
+        it's removed from the list so it cannot appear again.
         """
-        print '\n {0:>5}'.format(random.choice(self.films)[0])
+        self.film = random.choice(self.films)[0]
+        print '\n {0:>5}'.format(self.film)
+        self.film_no = self.film.index(self.film)
+        self.films.remove(self.films[self.film_no])
 
     def start(self):
         """
